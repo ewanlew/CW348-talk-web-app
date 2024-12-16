@@ -17,25 +17,22 @@ class RegisterController extends Controller
 
 
     public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|unique:users',
+        'password' => 'required|min:6|confirmed',
+    ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    $user = User::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'password' => Hash::make($request->password),
+    ]);
 
-        if (!$user) {
-            dd('User creation failed.');
-        }
+    Auth::login($user);
 
-        Auth::login($user);
+    return redirect(route('home'))->with('success', 'Account created successfully.');
+}
 
-        return redirect(route('home'))->with('success', 'Account created successfully.');
-    }
 }
