@@ -77,7 +77,13 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 
-    // Helper method to enforce role-based access
+    /**
+     * Helper method to enforce role-based access.
+     * Allows admins to edit/delete any post and users to edit/delete their own posts.
+     *
+     * @param Post $post
+     * @return void
+     */
     protected function authorizeAction(Post $post)
     {
         if (auth()->user()->isAdmin()) {
