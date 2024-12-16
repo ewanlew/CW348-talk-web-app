@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         // Seed users, each with 3 posts and each post with 2 comments
         User::factory(10)->create()->each(function ($user) {
-            Post::factory(3)->create(['user_id' => $user->id])->each(function ($post) use ($user) {
-                Comment::factory(2)->create(['post_id' => $post->id, 'user_id' => $user->id]);
+            $posts = Post::factory(3)->create(['user_id' => $user->id]);
+            $posts->each(function ($post) {
+                Comment::factory(2)->create([
+                    'post_id' => $post->id,
+                    'user_id' => $post->user_id,
+                ]);
             });
         });
     }
