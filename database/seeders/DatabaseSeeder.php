@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,5 +20,16 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });
+        
+        User::factory()->create([
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin', // Assign admin role
+        ]);
+        
+        User::factory(10)->create([
+            'role' => 'user', // Regular user role
+        ]);
     }
 }
