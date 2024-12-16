@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\AdminMiddleware;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
@@ -19,4 +20,8 @@ Route::get('/posts', function () {
 
 Route::get('/comments', function () {
     return Comment::all();
+});
+
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin/posts', [PostController::class, 'adminIndex']);
 });
