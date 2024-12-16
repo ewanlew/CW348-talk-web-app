@@ -11,16 +11,15 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [LoginController::class, 'login']);
+    Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [RegisterController::class, 'register']);
 });
+Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
-
-Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-Route::post('/register', [RegisterController::class, 'register']);
 
 Route::get('/users', function () {
     return User::all();
@@ -39,6 +38,5 @@ Route::middleware([AdminMiddleware::class])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    // Resource routes for posts
     Route::resource('posts', PostController::class);
 });

@@ -15,6 +15,7 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
+
     public function register(Request $request)
     {
         $request->validate([
@@ -28,6 +29,10 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if (!$user) {
+            dd('User creation failed.');
+        }
 
         Auth::login($user);
 

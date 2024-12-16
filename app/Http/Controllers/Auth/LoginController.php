@@ -13,6 +13,7 @@ class LoginController extends Controller
         return view('auth.login');
     }
 
+
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -20,6 +21,8 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->intended(route('home'))->with('success', 'Logged in successfully.');
         }
+
+        dd('Login failed with credentials:', $credentials);
 
         return back()->withErrors(['email' => 'Invalid credentials.'])->onlyInput('email');
     }
