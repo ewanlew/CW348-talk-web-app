@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\PostController;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
@@ -24,4 +25,9 @@ Route::get('/comments', function () {
 
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin/posts', [PostController::class, 'adminIndex']);
+});
+
+Route::middleware(['auth'])->group(function () {
+    // Resource routes for posts
+    Route::resource('posts', PostController::class);
 });
