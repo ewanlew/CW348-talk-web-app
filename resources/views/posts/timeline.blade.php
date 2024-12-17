@@ -5,21 +5,19 @@
 @section('content')
 <div class="container mx-auto max-w-2xl mt-8">
     <!-- Notifications -->
-    <div class="bg-gray-800 p-4 rounded mb-6 text-center text-white">
+    <div class="notification-announcement">
         You have 0 new notifications - <a href="#" class="text-blue-400">click here to view</a>
     </div>
 
     <!-- Post Input Section -->
-    <div class="bg-gray-900 p-6 rounded mb-6">
-        <h2 class="text-2xl font-bold text-white mb-4">Create a Post</h2>
-        <form method="POST" action="{{ route('posts.store') }}">
-            @csrf
-            <textarea name="content" placeholder="What's on your mind?" 
-                      class="w-full p-3 rounded bg-gray-800 text-white" rows="3" required></textarea>
-            <button type="submit" class="bg-blue-500 text-white px-6 py-2 mt-4 rounded hover:bg-blue-600">
-                Post
-            </button>
-        </form>
+    <div class="create-post-div">
+    <h2>Talk about something!</h2>
+    <form method="POST" action="{{ route('posts.store') }}">
+        @csrf
+        <textarea class="title-entry" name="title" placeholder="Title" rows="1" required></textarea>
+        <textarea class="content-entry" name="content" placeholder="Whatcha talking about?" rows="3" required></textarea>
+        <button type="submit">Post</button>
+    </form>
     </div>
 
     <!-- Posts Section -->

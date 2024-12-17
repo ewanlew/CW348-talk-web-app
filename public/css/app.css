@@ -35,11 +35,7 @@
     --clr-surface-tonal-a40: #75727b;
     --clr-surface-tonal-a50: #8f8c94;
 
-    /** Examples */ 
-    .bg-primary {
-    color: var(--clr-primary-a50); 
-    background-color: var(--clr-surface-a0); 
-    }
+    --clr-main-accent: #38bdf8;
   }
 
   html,body{
@@ -66,9 +62,9 @@
   .logout-button{
     margin-top: 10px;
     padding: 6px 12px;
-    border: 1px solid #38bdf8;
+    border: 1px solid white;
     background-color: transparent;
-    color: #38bdf8;
+    color: white;
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -119,8 +115,14 @@
     font-weight: 700;
   }
 
+  h2 {
+    color:white;
+    font-size: 28px;
+    font-weight: 700;
+  }
+
   a {
-    color: var(--clr-primary-a50);
+    color: var(--clr-main-accent);
   }
 
   a:visited {
@@ -164,15 +166,88 @@
 .comment-button {
   margin-left: 10px;
   padding: 6px 12px;
-  border: 1px solid #38bdf8;
+  border: 1px solid var(--clr-main-accent);
   background-color: transparent;
-  color: #38bdf8;
+  color: var(--clr-main-accent);
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .comment-button:hover {
-  background-color: #38bdf8;
+  background-color: var(--clr-main-accent);
   color: white;
+}
+
+.notification-announcement {
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.create-post-div {
+  position: relative;
+  border: 2px solid white; /* White outer border */
+  border-radius: 12px; /* Rounded corners */
+  background-color: #1a1a1a; /* Slightly darker background */
+  padding: 20px;
+  padding-bottom: 45px;
+  margin: 20px auto; /* Center the div horizontally */
+  width: 100%; /* Adjust the width as needed */
+  color: white; /* Text color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-sizing: border-box;
+}
+
+/* Title in the top-right corner */
+.create-post-div h2 {
+  top: 10px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+}
+
+/* Styling for entry textareas */
+.title-entry,
+.content-entry {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #4b5563; /* Gray border for the input */
+  border-radius: 8px;
+  background-color: #2d2d2d; /* Darker background for input */
+  color: white;
+  font-size: 1rem;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.title-entry::placeholder,
+.content-entry::placeholder {
+  color: #9ca3af; /* Light gray placeholder */
+}
+
+/* Post button styling */
+.create-post-div button {
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  background-color: var(--clr-primary-a40);
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-post-div button:hover {
+  background-color: var(--clr-primary-a20);
 }

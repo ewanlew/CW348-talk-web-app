@@ -8,7 +8,8 @@
     <div class="post-footer">
         {{ $post->comments->count() }} comments
         @if (Auth::check())
-            <button class="comment-button">Comment</button>
+        <button class="comment-button">View Comments</button>
+        <button class="comment-button">Comment</button>
         @endif
     </div>
 </div>
