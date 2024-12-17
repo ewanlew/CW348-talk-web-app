@@ -12,16 +12,24 @@
         <h1 class="talk">Talk!</h1>
 
         @if(Auth::check())
-            <p>Hello, {{ Auth::user()->name }}! You are logged in.</p>
-            <a href="{{ route('posts.index') }}">View Posts</a>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
+        <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
+            <span>Hello, {{ Auth::user()->name }}!</span>
+            <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
+            @csrf
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
         @else
-            <p>Hello, Guest!</p>
-            <a href="{{ route('login') }}">Login</a> |
-            <a href="{{ route('register') }}">Register</a>
+            <div class="header">
+                <p style="text-align:left; padding:10px">
+                    You are not logged in! Register or sign in.
+                    <span style="float:right; margin-right:10px;">
+                        <a href="{{ route('login') }}">Login</a> |
+                        <a href="{{ route('register') }}">Register</a>
+                    </span>
+                </p>
+            </div>
         @endif
     </div>
 </body>
