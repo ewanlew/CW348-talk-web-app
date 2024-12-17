@@ -70,12 +70,17 @@ class PostController extends Controller
 
     // Delete a post
     public function destroy(Post $post)
-    {
-        $this->authorizeAction($post);
-        $post->delete();
-
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+{
+    // allow only the post owner or an admin to delete the post
+    if (auth()->user()->id !== $post->user_id && !auth()->user()->isAdmin()) {
+        abort(403, 'You are not authorized to delete this post.');
     }
+
+    $post->delete();
+
+    return redirect('/timeline')->with('success', 'Post deleted successfully.');
+}
+
 
     // Fetches 20 posts for timeline
     public function timeline(Request $request)
@@ -91,9 +96,6 @@ class PostController extends Controller
 
     return view('posts.timeline', compact('posts'));
 }
-
-
-
 
     /**
      * Helper method to enforce role-based access.

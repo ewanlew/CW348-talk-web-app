@@ -43,6 +43,11 @@ Route::get('/usersdb', function () {
     return User::all();
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::resource('posts', PostController::class);
+});
+
+
 Route::get('/postsdb', function () {
     return Post::all();
 });
