@@ -3,6 +3,7 @@
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -33,6 +34,9 @@ Route::middleware(['auth'])->group(function () {
     // store a new post
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 });
+
+// show user profile
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 
 // db routes
 Route::get('/usersdb', function () {
