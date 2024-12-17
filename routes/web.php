@@ -11,37 +11,43 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
+// home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// guest routes
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
     Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
     Route::post('/register', [RegisterController::class, 'register']);
 });
+
+// logout route
 Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
 
+// authenticated routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/timeline', [PostController::class, 'timeline'])->name('posts.timeline');
-    Route::resource('posts', PostController::class);
+    // timeline
+    Route::get('/timeline', [PostController::class, 'timeline'])->name('timeline');
+
+    // store a new post
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 });
 
-
-Route::get('/users', function () {
+// db routes
+Route::get('/usersdb', function () {
     return User::all();
 });
 
-Route::get('/posts', function () {
+Route::get('/postsdb', function () {
     return Post::all();
 });
 
-Route::get('/comments', function () {
+Route::get('/commentsdb', function () {
     return Comment::all();
 });
 
+// admin
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/admin/posts', [PostController::class, 'adminIndex']);
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('posts', PostController::class);
+    Route::get('/admin/posts', [PostController::class, 'adminIndex'])->name('admin.posts.index');
 });
