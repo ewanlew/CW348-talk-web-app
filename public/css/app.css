@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+:root {
+    /** Dark theme primary colors */
+    --clr-primary-a0: #001ab9;
+    --clr-primary-a10: #4032c2;
+    --clr-primary-a20: #604aca;
+    --clr-primary-a30: #7a62d2;
+    --clr-primary-a40: #927bda;
+    --clr-primary-a50: #a994e2;
+    --clr-primary-a60: #cbbdf1;
+
+    /** Dark theme surface colors */
+    --clr-surface-a0: #121212;
+    --clr-surface-a10: #282828;
+    --clr-surface-a20: #3f3f3f;
+    --clr-surface-a30: #575757;
+    --clr-surface-a40: #717171;
+    --clr-surface-a50: #8b8b8b;
+
+    /** Dark theme tonal surface colors */
+    --clr-surface-tonal-a0: #181421;
+    --clr-surface-tonal-a10: #2d2936;
+    --clr-surface-tonal-a20: #44404c;
+    --clr-surface-tonal-a30: #5c5863;
+    --clr-surface-tonal-a40: #75727b;
+    --clr-surface-tonal-a50: #8f8c94;
+
+    /** Examples */ 
+    .bg-primary {
+    color: var(--clr-primary-a50); 
+    background-color: var(--clr-surface-a0); 
+    }
+  }
+
+  body {
+    background-color: var(--clr-surface-a0);
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+  }
+
+.talk {
+    font-size: 52px;
+    font-weight: 800;
+    font-family: 'Inter'
+}
+
+
+  h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  a {
+    color: var(--clr-primary-a50)
+  }
+
+  a:visited {
+    color: var(--clr-primary-a30)
+  }
+
+  a:hover {
+    color: var(--clr-primary-a60)
+  }

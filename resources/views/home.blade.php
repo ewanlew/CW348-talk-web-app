@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talk!</title>
+    <title>Talk! | Home</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Talk!</h1>
+        <h1 class="talk">Talk!</h1>
 
         @if(Auth::check())
             <p>Hello, {{ Auth::user()->name }}! You are logged in.</p>
