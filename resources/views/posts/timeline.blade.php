@@ -25,20 +25,42 @@
     <!-- Posts Section -->
     <div id="post-list">
         @foreach ($posts as $post)
-            <div class="bg-gray-800 p-4 rounded mb-4">
-                <div class="flex justify-between">
-                    <span class="text-blue-400">{{ $post->user->name }}</span>
-                    <span class="text-gray-400">{{ $post->created_at->diffForHumans() }}</span>
-                </div>
-                <p class="text-white mt-2">{{ $post->content }}</p>
-                <div class="mt-2 text-gray-400">
-                    {{ $post->comments->count() }} comments
-                    @if (Auth::check())
-                        <button class="ml-4 text-blue-400 hover:text-blue-500">Comment</button>
-                    @endif
-                </div>
-            </div>
+            @include('posts._post', ['post' => $post])
         @endforeach
     </div>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="text-center text-gray-400 mt-6" style="display:none;">
+        Loading more posts...
+    </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let page = 2; // Start loading from page 2
+    let loading = false;
+
+    window.addEventListener("scroll", function () {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !loading) {
+            loading = true;
+            document.getElementById("loading").style.display = "block";
+
+            fetch(`?page=${page}`, {
+                headers: { "X-Requested-With": "XMLHttpRequest" },
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("post-list").insertAdjacentHTML('beforeend', data);
+                page++;
+                loading = false;
+                document.getElementById("loading").style.display = "none";
+            })
+            .catch(() => {
+                loading = false;
+                document.getElementById("loading").style.display = "none";
+            });
+        }
+    });
+});
+</script>
 @endsection

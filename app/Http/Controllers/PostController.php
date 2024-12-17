@@ -34,7 +34,7 @@ class PostController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+        return redirect()->route('timeline')->with('success', 'Post created successfully.');
     }
 
     // Show a specific post
@@ -82,14 +82,16 @@ class PostController extends Controller
 {
     $posts = Post::with('user', 'comments')
         ->orderBy('created_at', 'desc')
-        ->paginate(20);
+        ->paginate(10);
 
     if ($request->ajax()) {
-        return view('posts._post', ['posts' => $posts])->render();
+        // Return each post as part of the AJAX request
+        return view('posts._posts', ['posts' => $posts])->render();
     }
 
     return view('posts.timeline', compact('posts'));
 }
+
 
 
 
