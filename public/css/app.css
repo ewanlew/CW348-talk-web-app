@@ -64,6 +64,16 @@
     background: var(--clr-surface-a0);
 }
 
+  .container {
+    margin: 0 auto;
+    max-width: 640px;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+
 
   h1 {
     color: white;
