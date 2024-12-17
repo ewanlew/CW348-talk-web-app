@@ -20,6 +20,11 @@ Route::middleware(['guest'])->group(function () {
 });
 Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/timeline', [PostController::class, 'timeline'])->name('posts.timeline');
+    Route::resource('posts', PostController::class);
+});
+
 
 Route::get('/users', function () {
     return User::all();
