@@ -77,6 +77,22 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
     }
 
+    // Fetches 20 posts for timeline
+    public function timeline(Request $request)
+{
+    $posts = Post::with('user', 'comments')
+        ->orderBy('created_at', 'desc')
+        ->paginate(20);
+
+    if ($request->ajax()) {
+        return view('posts._post', ['posts' => $posts])->render();
+    }
+
+    return view('posts.timeline', compact('posts'));
+}
+
+
+
     /**
      * Helper method to enforce role-based access.
      * Allows admins to edit/delete any post and users to edit/delete their own posts.
