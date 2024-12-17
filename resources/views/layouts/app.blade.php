@@ -8,12 +8,13 @@
 </head>
 <body class="bg-gray-900 text-white">
     <nav class="bg-gray-800 p-4 mb-4">
-        <div class="container mx-auto flex justify-between">
-            <a href="{{ route('timeline') }}" class="text-blue-400 text-2xl font-bold">Talk!</a>
+        <div class="header-nonstick">
+            <h1 class="talk">Talk!</h1>
+            <span>Welcome back, {{ Auth::user()->name }}!</span>
             <div>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="text-gray-300 hover:text-white ml-4">Logout</button>
+                    <button type="submit" class="logout-button">Logout</button>
                 </form>
             </div>
         </div>
