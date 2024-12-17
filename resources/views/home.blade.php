@@ -14,6 +14,7 @@
         @if(Auth::check())
         <div class="header" style="display: flex; justify-content: space-between; align-items: center;">
             <span>Hello, {{ Auth::user()->name }}!</span>
+            <a href="{{ route('posts.timeline') }}">Go to my timeline</a>
             <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
             @csrf
         <button type="submit">Logout</button>
