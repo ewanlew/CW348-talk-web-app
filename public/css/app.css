@@ -74,7 +74,6 @@
   }
 
 
-
   h1 {
     color: white;
     font-size: 36px;
@@ -92,3 +91,49 @@
   a:hover {
     color: var(--clr-primary-a60)
   }
+
+  .post {
+    border: 2px solid var(--clr-primary-a10); /* Black border */
+    border-radius: 12px; /* Rounded corners */
+    padding: 16px; /* Inner spacing */
+    margin-bottom: 20px; /* Space between posts */
+    background-color: #1a1a1a; /* Slightly darker background for contrast */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between; /* Pushes items to far left and right */
+  align-items: center; /* Vertically center items */
+  margin-bottom: 8px;
+}
+
+.post-author {
+  font-weight: bold;
+  color: #38bdf8; /* Light blue color */
+}
+
+.post-time {
+  font-size: 0.9rem;
+  color: #9ca3af; /* Gray color for time */
+}
+
+.post-footer {
+  margin-top: 12px;
+}
+
+.comment-button {
+  margin-left: 10px;
+  padding: 6px 12px;
+  border: 1px solid #38bdf8;
+  background-color: transparent;
+  color: #38bdf8;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.comment-button:hover {
+  background-color: #38bdf8;
+  color: white;
+}

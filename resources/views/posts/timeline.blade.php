@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Timeline')
+@section('title', 'Talk! Timeline')
 
 @section('content')
 <div class="container mx-auto max-w-2xl mt-8">
