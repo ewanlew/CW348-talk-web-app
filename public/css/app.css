@@ -75,6 +75,17 @@
     color: black;
   }
 
+  .grid-container {
+    display: flex;
+    gap: 20px;
+    align-items: center
+  }
+
+  .grid-item {
+    flex: 1;
+    justify-content: center;
+  }
+
 .talk {
     font-size: 52px;
     font-weight: 800;
@@ -92,16 +103,16 @@
 
 .header-nonstick {
   width: 100%;
-    height: 100%;
-    background-color: var(--clr-surface-tonal-a0);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    box-sizing: border-box;
-    padding-bottom: 16px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  height: auto;
+  background-color: var(--clr-surface-tonal-a0);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  box-sizing: border-box;
+  padding-bottom: 16px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 
 }
   .container {
@@ -315,4 +326,55 @@
 
 .create-post-div button:hover {
   background-color: var(--clr-primary-a20);
+}
+
+.home-logout-button {
+  background-color: red;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-logout-button:hover {
+  background-color: white;
+  color: red;
+}
+
+.home-timeline-button {
+  background-color: var(--clr-surface-tonal-a0);
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-timeline-button:hover {
+  background-color: white;
+  color: var(--clr-surface-tonal-a0);
+}
+
+.home-account-button {
+  background-color: green;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-account-button:hover {
+  background-color: white;
+  color: green;
 }

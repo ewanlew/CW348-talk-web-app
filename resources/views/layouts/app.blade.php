@@ -7,8 +7,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
-<body class="bg-gray-900 text-white">
-    <nav class="bg-gray-800 p-4 mb-4">
+<body>
+    <nav>
         <div class="header-nonstick">
             <h1 class="talk">Talk!</h1>
             <span>Welcome back, {{ Auth::user()->name }}!</span>
