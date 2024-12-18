@@ -48,6 +48,10 @@ Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name
 // delete comment
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
+// get notis
+Route::get('/notifications', [UserController::class, 'notifications'])
+    ->name('notifications')
+    ->middleware('auth');
 
 // db routes
 Route::get('/usersdb', function () {

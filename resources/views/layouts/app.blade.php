@@ -35,7 +35,7 @@
 
 
                 <!-- Notifications (TODO!!!) -->
-                <form method="GET" action="{{ route('user.show', Auth::id()) }}">
+                <form method="GET" action="{{ route('notifications', Auth::id()) }}">
                     <button type="submit" class="logout-button">
                         <span class="material-symbols-outlined">
                             notifications

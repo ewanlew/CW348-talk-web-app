@@ -14,6 +14,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $tab = $request->query('tab', 'posts'); // Default to 'posts'
 
+        $totalPosts = $user->posts()->count();
+        $totalComments = $user->comments()->count();
+
         if ($tab === 'posts') {
             $posts = $user->posts()->with('comments')->latest()->paginate(10);
             $comments = null;
@@ -26,7 +29,29 @@ class UserController extends Controller
             $posts = null;
         }
 
-        return view('users.show', compact('user', 'tab', 'posts', 'comments'));
+        return view('users.show', [
+            'user' => $user,
+            'totalPosts' => $totalPosts,
+            'totalComments' => $totalComments,
+            'tab' => request('tab', 'posts'),
+            'posts' => $user->posts()->paginate(10),
+            'comments' => $user->comments()->with('post')->paginate(10),
+        ]);
+    }
+
+    public function notifications()
+    {
+        $userId = auth()->id();
+
+        $notifications = Post::with('comments.user')
+            ->where('user_id', $userId)
+            ->whereHas('comments', function ($query) use ($userId) {
+                $query->where('user_id', '!=', $userId);
+            })
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        return view('users.notifications', compact('notifications'));
     }
 
     
