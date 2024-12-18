@@ -48,7 +48,9 @@
         @forelse ($post->comments as $comment)
             <div class="post">
                 <div class="post-header">
-                    <a href="{{ route('user.show', $post->user->id) }}" class="post-author">{{ $post->user->name }}</a>
+                    <a href="{{ route('user.show', $comment->user->id) }}" class="post-author">
+                        {{ $comment->user->name }}
+                    </a>
                     <span class="post-time">{{ $comment->created_at->diffForHumans() }}</span>
                 </div>
                 <p>{{ $comment->content }}</p>
@@ -57,5 +59,6 @@
             <p class="text-gray-400">No comments yet, want to talk about something?</p>
         @endforelse
     </div>
+
 </div>
 @endsection
