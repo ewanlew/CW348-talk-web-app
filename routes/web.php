@@ -45,6 +45,10 @@ Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 // leave comment
 Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 
+// delete comment
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+
 // db routes
 Route::get('/usersdb', function () {
     return User::all();

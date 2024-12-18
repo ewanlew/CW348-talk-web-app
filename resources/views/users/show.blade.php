@@ -1,23 +1,27 @@
 @extends('layouts.app')
 
+@section('title', 'Talk! ' . $user->name)
 @section('content')
 <div class="container mx-auto mt-8">
     <!-- header -->
-    <div class="profile-header mb-6">
-        <h1 class="text-4xl font-bold text-white">{{ $user->name }}'s Profile</h1>
+    <div class="pc-div">
+        <h1>{{ $user->name }}</h1>
         <p class="text-gray-400">Joined: {{ $user->created_at->toFormattedDateString() }}</p>
+        <p>Total Posts: <span class="text-blue-400">{{ $totalPosts }}</span></p>
+        <p>Total Comments: <span class="text-blue-400">{{ $totalComments }}</span></p>
     </div>
 
+
     <!-- tab nav -->
-    <div class="mb-6 flex space-x-4">
-        <a href="{{ route('user.show', ['id' => $user->id, 'tab' => 'posts']) }}"
-        class="{{ $tab === 'posts' ? 'text-blue-400' : 'text-gray-400 hover:text-gray-200' }}">
-            Posts
-        </a>
-        <a href="{{ route('user.show', ['id' => $user->id, 'tab' => 'comments']) }}"
-        class="{{ $tab === 'comments' ? 'text-blue-400' : 'text-gray-400 hover:text-gray-200' }}">
-            Comments
-        </a>
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="pc-div" style="display: flex; justify-content: center; gap: 20px; align-items: center; width: 50%;">
+            <a href="{{ route('user.show', ['id' => $user->id, 'tab' => 'posts']) }}" class="pc-view">
+                Posts
+            </a>
+            <a href="{{ route('user.show', ['id' => $user->id, 'tab' => 'comments']) }}" class="pc-view">
+                Comments
+            </a>
+        </div>
     </div>
 
 

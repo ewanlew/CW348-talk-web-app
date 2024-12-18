@@ -174,12 +174,35 @@
   margin-top: 12px;
 }
 
+
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 1,
   'wght' 500,
   'GRAD' 0,
   'opsz' 24
+}
+
+.pc-div {
+  border: 2px solid var(--clr-primary-a50);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.pc-view {
+  color:var(--clr-primary-a60);
+}
+
+.pc-view:visited {
+  color:var(--clr-primary-a60);
+}
+
+.pc-view:hover {
+  color:var(--clr-primary-a50)
 }
 
 .comment-button {
