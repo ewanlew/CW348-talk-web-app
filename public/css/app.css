@@ -165,6 +165,11 @@
   color: #38bdf8;
 }
 
+.post-author:visited {
+  font-weight: bold;
+  color: #38bdf8;
+}
+
 .post-time {
   font-size: 0.9rem;
   color: #9ca3af;
@@ -173,7 +178,6 @@
 .post-footer {
   margin-top: 12px;
 }
-
 
 
 .material-symbols-outlined {
@@ -222,6 +226,9 @@
 }
 
 .notification-announcement {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   border: 2px solid white;
   border-radius: 12px;
   padding: 16px;

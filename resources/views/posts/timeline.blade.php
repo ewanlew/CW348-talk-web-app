@@ -3,11 +3,14 @@
 @section('title', 'Talk! Timeline')
 
 @section('content')
-<div class="container mx-auto max-w-2xl mt-8">
+<div class="container">
     <!-- Notifications -->
     <div class="notification-announcement">
-        You have 0 new notifications - <a href="#" class="text-blue-400">click here to view</a>
+        You have {{ $notificationCount }} 
+        {{ $notificationCount === 1 ? 'notification' : 'notifications' }} -
+        <a href="{{ route('notifications') }}">click here to view</a>
     </div>
+
 
     <!-- Post Input Section -->
     <div class="create-post-div">
@@ -28,14 +31,14 @@
     </div>
 
     <!-- Loading Spinner -->
-    <div id="loading" class="text-center text-gray-400 mt-6" style="display:none;">
+    <div id="loading" style="display:none;">
         Loading more posts...
     </div>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-    let page = 2; // Start loading from page 2
+    let page = 2;
     let loading = false;
 
     window.addEventListener("scroll", function () {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Your Notifications')
+@section('title', 'Talk! Notifications')
 
 @section('content')
 <div class="container mx-auto max-w-2xl mt-8">
