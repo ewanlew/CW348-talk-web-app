@@ -156,6 +156,11 @@
     color: var(--clr-primary-a60)
   }
 
+  a:focus, button:focus {
+    outline: 5px solid var(--clr-primary-a60);
+    outline-offset: 4px;
+  }
+
   .post {
     border: 2px solid var(--clr-primary-a10);
     border-radius: 12px;

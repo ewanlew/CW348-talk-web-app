@@ -1,6 +1,6 @@
 <div class="post">
 <div class="post-header">
-        <a href="{{ route('user.show', $post->user->id) }}" class="post-author">{{ $post->user->name }}</a>
+        <a tabindex="0" href="{{ route('user.show', $post->user->id) }}" class="post-author">{{ $post->user->name }}</a>
         <span class="post-time">{{ $post->created_at->diffForHumans() }}</span>
     </div>
     <h3>{{ $post->title }}</h3>
@@ -10,7 +10,7 @@
         {{ $post->comments->count() }} {{ $post->comments->count() === 1 ? 'comment' : 'comments' }}
         @if (Auth::check())
             <form method="GET" action="{{ route('posts.show', $post->id) }}" style="display: inline;">
-                <button type="submit" class="comment-button">
+                <button tabindex="0" type="submit" class="comment-button">
                     Comments
                 </button>
             </form>
@@ -21,7 +21,7 @@
         <form method="POST" action="{{ route('posts.destroy', $post->id) }}" onsubmit="return confirm('Are you sure you want to delete this post?');">
             @csrf
             @method('DELETE')
-            <button type="submit" class="delete-button">Delete</button>
+            <button tabindex="0" type="submit" class="delete-button">Delete</button>
         </form>
     @endif
 </div>

@@ -11,7 +11,7 @@
             <div class="post-header">
                 <p>
                     You have new comments on 
-                    <a href="{{ route('posts.show', $post->id) }}" class="text-blue-400">
+                    <a tabindex="0" href="{{ route('posts.show', $post->id) }}" class="text-blue-400">
                         "{{ $post->title }}"
                     </a>
                 </p>

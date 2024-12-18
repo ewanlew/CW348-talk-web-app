@@ -8,7 +8,7 @@
     <div class="notification-announcement">
         You have {{ $notificationCount }} 
         {{ $notificationCount === 1 ? 'notification' : 'notifications' }} -
-        <a href="{{ route('notifications') }}">click here to view</a>
+        <a tabindex="5" href="{{ route('notifications') }}">click here to view</a>
     </div>
 
 
@@ -17,9 +17,9 @@
     <h2>Talk about something!</h2>
     <form method="POST" action="{{ route('posts.store') }}">
         @csrf
-        <textarea class="title-entry" name="title" placeholder="Title" rows="1" required></textarea>
-        <textarea class="content-entry" name="content" placeholder="Whatcha talking about?" rows="3" required></textarea>
-        <button type="submit">Post</button>
+        <textarea tabindex="6" class="title-entry" name="title" placeholder="Title" rows="1" required></textarea>
+        <textarea tabindex="7" class="content-entry" name="content" placeholder="Whatcha talking about?" rows="3" required></textarea>
+        <button tabindex="8" type="submit">Post</button>
     </form>
     </div>
 

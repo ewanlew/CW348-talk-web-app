@@ -17,7 +17,7 @@
                 <!-- Home -->
                 <form method="GET" action="{{ route('timeline') }}">
                     @csrf
-                    <button type="submit" class="logout-button">
+                    <button tabindex="1" title="Home" alt="Home" type="submit" class="logout-button">
                         <span class="material-symbols-outlined">
                             home
                         </span>
@@ -26,7 +26,7 @@
 
                 <!-- Profile -->
                 <form method="GET" action="{{ route('user.show', Auth::id()) }}">
-                    <button type="submit" class="logout-button">
+                    <button tabindex="2" title="Profile" alt="Profile" type="submit" class="logout-button">
                         <span class="material-symbols-outlined">
                             person
                         </span>
@@ -36,7 +36,7 @@
 
                 <!-- Notifications (TODO!!!) -->
                 <form method="GET" action="{{ route('notifications', Auth::id()) }}">
-                    <button type="submit" class="logout-button">
+                    <button tabindex="3" title="Notifications" alt="Notifications" type="submit" class="logout-button">
                         <span class="material-symbols-outlined">
                             notifications
                         </span>
@@ -46,7 +46,7 @@
                 <!-- Logout -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="logout-button">
+                    <button tabindex="4" title="Sign Out" alt="Sign Out" type="submit" class="logout-button">
                         <span class="material-symbols-outlined">
                             logout
                         </span>
