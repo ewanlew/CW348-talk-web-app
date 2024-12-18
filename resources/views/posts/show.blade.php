@@ -19,7 +19,7 @@
         <p>{{ $post->content }}</p>
         <div class="post-footer" style="display: flex; justify-content: space-between; align-items: center;">
         <div>
-            {{ $post->comments->count() }} comments
+            {{ $post->comments->count() }} {{ $post->comments->count() === 1 ? 'comment' : 'comments' }}
         </div>
 
         @if (Auth::check() && (Auth::user()->id === $post->user_id || Auth::user()->isAdmin()))
@@ -31,9 +31,17 @@
         @endif
     </div>
 
-
-
     </div>
+
+    <div class="post">
+        <h3>Leave a comment:</h3>
+        <form method="POST" action="{{ route('comments.store', $post->id) }}">
+            @csrf
+            <textarea name="content" placeholder="What do you want to say?" rows="3" class="content-entry"></textarea>
+            <button type="submit" class="comment-button">Comment</button>
+        </form>
+    </div>
+
     <!-- comments -->
     <div class="comments mt-8">
         <h3 class="text-lg font-bold mb-4 text-white">Comments</h3>
