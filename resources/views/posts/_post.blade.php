@@ -7,15 +7,13 @@
     <p>{{ $post->content }}</p>
     <div class="post-footer" style="display: flex; justify-content: space-between; align-items: center;">
     <div>
-        {{ $post->comments->count() }} comments
+        {{ $post->comments->count() }} {{ $post->comments->count() === 1 ? 'comment' : 'comments' }}
         @if (Auth::check())
             <form method="GET" action="{{ route('posts.show', $post->id) }}" style="display: inline;">
                 <button type="submit" class="comment-button">
-                    View Comments
+                    Comments
                 </button>
             </form>
-
-            <button class="comment-button">Comment</button>
         @endif
     </div>
 
