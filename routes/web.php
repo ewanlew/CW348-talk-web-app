@@ -4,6 +4,7 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LogoutController;
@@ -41,15 +42,13 @@ Route::middleware(['auth'])->group(function () {
 // show user profile
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 
+// leave comment
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+
 // db routes
 Route::get('/usersdb', function () {
     return User::all();
 });
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('posts', PostController::class);
-});
-
 
 Route::get('/postsdb', function () {
     return Post::all();
@@ -62,4 +61,8 @@ Route::get('/commentsdb', function () {
 // admin
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin/posts', [PostController::class, 'adminIndex'])->name('admin.posts.index');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('posts', PostController::class);
 });
