@@ -36,6 +36,7 @@
     --clr-surface-tonal-a50: #8f8c94;
 
     --clr-main-accent: #38bdf8;
+    --clr-main-accent-a10: #266cad;
   }
 
   html,body{
@@ -148,7 +149,7 @@
   }
 
   a:visited {
-    color: var(--clr-primary-a30)
+    color: var(--clr-main-accent)
   }
 
   a:hover {
@@ -346,25 +347,8 @@
   color: red;
 }
 
-.home-timeline-button {
-  background-color: var(--clr-surface-tonal-a0);
-  color: white;
-  width: 100%;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.home-timeline-button:hover {
-  background-color: white;
-  color: var(--clr-surface-tonal-a0);
-}
-
 .home-account-button {
-  background-color: green;
+  background-color: var(--clr-main-accent-a10);
   color: white;
   width: 100%;
   border: none;
@@ -377,5 +361,5 @@
 
 .home-account-button:hover {
   background-color: white;
-  color: green;
+  color: var(--clr-main-accent-a10);
 }
