@@ -40,8 +40,10 @@ class PostController extends Controller
     // Show a specific post
     public function show(Post $post)
     {
+        $post->load('user', 'comments'); // Load post along with its user and comments
         return view('posts.show', compact('post'));
     }
+
 
     // Show the form for editing a post
     public function edit(Post $post)
