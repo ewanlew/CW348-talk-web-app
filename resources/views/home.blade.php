@@ -7,7 +7,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-
     <div class="header-nonstick">
         <h1 class="talk" style="margin-bottom: 10px">Talk!</h1>
     </div>

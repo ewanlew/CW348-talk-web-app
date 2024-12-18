@@ -274,7 +274,8 @@
 
 /* Styling for entry textareas */
 .title-entry,
-.content-entry {
+.content-entry,
+.form-entry {
   display: block;
   width: 100%;
   margin: 10px 0;
