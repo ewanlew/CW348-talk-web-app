@@ -31,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
     // timeline
     Route::get('/timeline', [PostController::class, 'timeline'])->name('timeline');
 
+    // view single post
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+
     // store a new post
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 });
