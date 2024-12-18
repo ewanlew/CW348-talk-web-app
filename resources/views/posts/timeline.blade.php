@@ -36,32 +36,55 @@
     </div>
 </div>
 
-<script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
-    let page = 2;
-    let loading = false;
+    let page = 2; // Pagination starts at page 2
+    let loading = false; // Prevent overlapping requests
+    let hasMorePosts = true; // Stop if no posts are left
 
+    // Debounce scroll event
+    let debounceTimer;
     window.addEventListener("scroll", function () {
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !loading) {
-            loading = true;
-            document.getElementById("loading").style.display = "block";
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            if (isNearBottom() && !loading && hasMorePosts) {
+                fetchPosts();
+            }
+        }, 200); // Throttle to run every 200ms
+    });
 
-            fetch(`?page=${page}`, {
-                headers: { "X-Requested-With": "XMLHttpRequest" },
-            })
+    // Check if near the bottom
+    function isNearBottom() {
+        return window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
+    }
+
+    // Fetch more posts
+    function fetchPosts() {
+        loading = true;
+        document.getElementById("loading").style.display = "block";
+
+        fetch(`?page=${page}`, {
+            headers: { "X-Requested-With": "XMLHttpRequest" },
+        })
             .then(response => response.text())
             .then(data => {
-                document.getElementById("post-list").insertAdjacentHTML('beforeend', data);
-                page++;
+                if (data.trim() === "") {
+                    hasMorePosts = false; // Stop when no more posts
+                } else {
+                    document.getElementById("post-list").insertAdjacentHTML('beforeend', data);
+                    page++;
+                }
                 loading = false;
                 document.getElementById("loading").style.display = "none";
             })
             .catch(() => {
                 loading = false;
+                hasMorePosts = false;
                 document.getElementById("loading").style.display = "none";
             });
-        }
-    });
+    }
 });
+
 </script>
+
 @endsection

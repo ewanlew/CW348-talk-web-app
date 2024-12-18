@@ -83,29 +83,28 @@ class PostController extends Controller
     return redirect('/timeline')->with('success', 'Post deleted successfully.');
 }
 
-    // 20 posts for timeline
+    // 10 posts for timeline
     public function timeline(Request $request)
-    {
-        $user = auth()->user();
+{
+    $posts = Post::with('user', 'comments')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
 
-        $notificationCount = \App\Models\Comment::whereHas('post', function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        })->where('updated_at', '>', $user->last_visited_at ?? now()->subDay())->count();
-
-        $posts = Post::with('user', 'comments')
-            ->orderBy('created_at', 'desc')
-            ->paginate(10);
-
-        if ($request->ajax()) {
-            return view('posts._posts', ['posts' => $posts])->render();
-        }
-
-        return view('posts.timeline', [
-            'posts' => $posts,
-            'notificationCount' => $notificationCount,
-        ]);
+    if ($request->ajax()) {
+        // Return only the content for the next page
+        return view('posts._posts', ['posts' => $posts])->render();
     }
 
+    $user = auth()->user();
+    $notificationCount = \App\Models\Comment::whereHas('post', function ($query) use ($user) {
+        $query->where('user_id', $user->id);
+    })->where('updated_at', '>', $user->last_visited_at ?? now()->subDay())->count();
+
+    return view('posts.timeline', [
+        'posts' => $posts,
+        'notificationCount' => $notificationCount,
+    ]);
+}
 
     /**
      * Helper method to enforce role-based access.

@@ -13,10 +13,10 @@ use App\Models\Post;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 
-// home route
+// Home route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// guest routes
+// Guest routes
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [LoginController::class, 'login']);
@@ -24,36 +24,34 @@ Route::middleware(['guest'])->group(function () {
     Route::post('/register', [RegisterController::class, 'register']);
 });
 
-// logout route
+// Logout route
 Route::post('/logout', [LogoutController::class, 'logout'])->middleware('auth')->name('logout');
 
-// authenticated routes
+// Authenticated routes
 Route::middleware(['auth'])->group(function () {
-    // timeline
+    // Timeline route
     Route::get('/timeline', [PostController::class, 'timeline'])->name('timeline');
 
-    // view single post
-    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
-
-    // store a new post
+    // Post routes
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 
-// show user profile
+// Show user profile
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 
-// leave comment
+// Comment routes
 Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
-
-// delete comment
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy');
 
-// get notis
+// Notifications route
 Route::get('/notifications', [UserController::class, 'notifications'])
     ->name('notifications')
     ->middleware('auth');
 
-// db routes
+// Database routes
 Route::get('/usersdb', function () {
     return User::all();
 });
@@ -66,11 +64,7 @@ Route::get('/commentsdb', function () {
     return Comment::all();
 });
 
-// admin
+// Admin routes
 Route::middleware([AdminMiddleware::class])->group(function () {
     Route::get('/admin/posts', [PostController::class, 'adminIndex'])->name('admin.posts.index');
-});
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('posts', PostController::class);
 });
