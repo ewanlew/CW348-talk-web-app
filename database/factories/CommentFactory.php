@@ -9,8 +9,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
 {
+    /**
+     * the associated model
+     */
     protected $model = Comment::class;
 
+    /**
+     * define the model's default state
+     */
     public function definition(): array
     {
         return [

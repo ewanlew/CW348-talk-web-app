@@ -7,20 +7,27 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    // Display a list of posts
+
+    /**
+     * displays list of posts
+     */
     public function index()
     {
         $posts = Post::with('user', 'comments')->paginate(10); // Add pagination
         return view('posts.index', compact('posts'));
     }
 
-    // Show the form for creating a new post
+    /**
+     * shows the form to create new post
+     */
     public function create()
     {
         return view('posts.create');
     }
 
-    // Store a newly created post in the database
+    /**
+     * handles storage of new post
+     */
     public function store(Request $request)
     {
         $request->validate([
@@ -37,7 +44,9 @@ class PostController extends Controller
         return redirect()->route('timeline')->with('success', 'Post created successfully.');
     }
 
-    // Show a specific post
+    /**
+     * shows a specific post
+     */
     public function show(Post $post)
     {
         $post->load('user', 'comments'); // Load post along with its user and comments
@@ -45,14 +54,18 @@ class PostController extends Controller
     }
 
 
-    // Show the form for editing a post
+    /**
+     * shows form for editing a post (rip didn't do)
+     */
     public function edit(Post $post)
     {
         $this->authorizeAction($post);
         return view('posts.edit', compact('post'));
     }
 
-    // Update a post in the database
+    /**
+     * updates a post in the database
+     */
     public function update(Request $request, Post $post)
     {
         $this->authorizeAction($post);
@@ -70,7 +83,9 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
 
-    // Delete a post
+    /**
+     * handles post deletion
+     */
     public function destroy(Post $post)
 {
     // allow only the post owner or an admin to delete the post
@@ -91,7 +106,7 @@ class PostController extends Controller
         ->paginate(10);
 
     if ($request->ajax()) {
-        // Return only the content for the next page
+        // return only the content for the next page
         return view('posts._posts', ['posts' => $posts])->render();
     }
 

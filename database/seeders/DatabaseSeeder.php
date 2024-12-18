@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
+    /**
+     * seed the application's database
+     */
     public function run()
     {
+        // create users with posts and comments
         User::factory(10)->create()->each(function ($user) {
             Post::factory(3)->create(['user_id' => $user->id])->each(function ($post) {
                 Comment::factory(2)->create([
@@ -20,16 +24,18 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });
-        
+
+        // create an admin user
         User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
-            'role' => 'admin', // Assign admin role
+            'role' => 'admin',
         ]);
-        
+
+        // create regular users
         User::factory(10)->create([
-            'role' => 'user', // Regular user role
+            'role' => 'user',
         ]);
     }
 }

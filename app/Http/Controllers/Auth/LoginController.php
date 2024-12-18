@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    /**
+     * shows login form
+     */
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-
+    /**
+     * handles login req
+     */
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');

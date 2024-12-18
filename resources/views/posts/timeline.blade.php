@@ -38,9 +38,9 @@
 
  <script>
 document.addEventListener("DOMContentLoaded", function () {
-    let page = 2; // Pagination starts at page 2
-    let loading = false; // Prevent overlapping requests
-    let hasMorePosts = true; // Stop if no posts are left
+    let page = 2; 
+    let loading = false; 
+    let hasMorePosts = true;
 
     // Debounce scroll event
     let debounceTimer;
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (isNearBottom() && !loading && hasMorePosts) {
                 fetchPosts();
             }
-        }, 200); // Throttle to run every 200ms
+        }, 200); // 200ms
     });
 
     // Check if near the bottom

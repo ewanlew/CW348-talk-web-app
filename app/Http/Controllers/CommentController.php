@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    /**
+     * handles comment post, given the auth
+     */
     public function store(Request $request, Post $post)
     {
         $request->validate([
@@ -24,6 +27,9 @@ class CommentController extends Controller
             ->with('success', 'Comment added successfully!');
     }
 
+    /**
+     * handles comment deleting
+     */
     public function destroy(Comment $comment)
     {
         if (Auth::user()->id !== $comment->user_id && !Auth::user()->isAdmin()) {

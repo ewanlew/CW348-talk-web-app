@@ -34,7 +34,7 @@
                 </form>
 
 
-                <!-- Notifications (TODO!!!) -->
+                <!-- Notifications -->
                 <form method="GET" action="{{ route('notifications', Auth::id()) }}">
                     <button tabindex="3" title="Notifications" alt="Notifications" type="submit" class="logout-button">
                         <span class="material-symbols-outlined">

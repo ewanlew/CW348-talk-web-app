@@ -9,10 +9,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    /**
+     * display user profile with posts or comments
+     */
     public function show($id, Request $request)
     {
         $user = User::findOrFail($id);
-        $tab = $request->query('tab', 'posts'); // Default to 'posts'
+        $tab = $request->query('tab', 'posts'); // default to 'posts'
 
         $totalPosts = $user->posts()->count();
         $totalComments = $user->comments()->count();
@@ -21,7 +24,7 @@ class UserController extends Controller
             $posts = $user->posts()->with('comments')->latest()->paginate(10);
             $comments = null;
         } else {
-            // Fetch comments made by the user and include the related post
+            // fetch comments made by the user and include the related post
             $comments = Comment::with('post')
                         ->where('user_id', $user->id)
                         ->latest()
@@ -39,6 +42,9 @@ class UserController extends Controller
         ]);
     }
 
+    /**
+     * display notifications for the user
+     */
     public function notifications()
     {
         $userId = auth()->id();
@@ -53,6 +59,4 @@ class UserController extends Controller
 
         return view('users.notifications', compact('notifications'));
     }
-
-    
 }
