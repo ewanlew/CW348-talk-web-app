@@ -56,19 +56,32 @@
         @endforelse
         {{ $posts->links() }}
     @else
-        <h2 class="text-2xl font-bold text-white mb-4">Comments by {{ $user->name }}</h2>
+        <h2>Comments by {{ $user->name }}</h2>
         @forelse ($comments as $comment)
-            <div class="post mb-6">
-                <div class="post-header">
-                    <a href="{{ route('posts.show', $comment->post->id) }}" class="post-author text-blue-400 hover:text-blue-500">
-                        {{ $comment->post->title }}
-                    </a>
-                    <span class="post-time">{{ $comment->created_at->diffForHumans() }}</span>
-                </div>
-                <p>{{ $comment->content }}</p>
+        <div class="post" style="position: relative; padding-bottom: 40px;">
+            <div class="post-header">
+                <a href="{{ route('posts.show', $comment->post->id) }}" class="post-author text-blue-400 hover:text-blue-500">
+                    {{ $comment->post->title }}
+                </a>
+                <span class="post-time">{{ $comment->created_at->diffForHumans() }}</span>
             </div>
+            <p>{{ $comment->content }}</p>
+
+            @if (Auth::check() && (Auth::user()->id === $comment->user_id || Auth::user()->isAdmin()))
+                <form method="POST" action="{{ route('comments.destroy', $comment->id) }}" 
+                    onsubmit="return confirm('Are you sure you want to delete this comment?');"
+                    style="position: absolute; bottom: 10px; right: 10px; margin: 0;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="delete-button">
+                        Delete
+                    </button>
+                </form>
+            @endif
+        </div>
+
         @empty
-            <p class="text-gray-400">No comments yet.</p>
+            <p>No comments yet.</p>
         @endforelse
         {{ $comments->links() }}
     @endif
