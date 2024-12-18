@@ -27,7 +27,8 @@
                         name="email" 
                         id="email"
                         class="form-entry" 
-                        placeholder="Enter your email" 
+                        placeholder="Enter your email"
+                        tabindex="1" 
                         required>
                 </div>
 
@@ -41,20 +42,22 @@
                         id="password"
                         class="form-entry" 
                         placeholder="Enter your password" 
+                        tabindex="2" 
                         required>
                 </div>
 
                 <button 
                     type="submit" 
                     class="home-account-button"
-                    style="width: 100%; padding: 10px; margin-top: 10px;">
+                    style="width: 100%; padding: 10px; margin-top: 10px;"
+                    tabindex="3">
                     Login
                 </button>
             </form>
 
-            <p style="margin-top: 15px; color: gray;">
+            <p style="margin-top: 15px; color: white;">
                 Don't have an account? 
-                <a href="{{ route('register') }}" class="text-blue-400 hover:text-blue-500">
+                <a href="{{ route('register') }}" tabindex="4" class="text-blue-400 hover:text-blue-500">
                     Register here
                 </a>
             </p>

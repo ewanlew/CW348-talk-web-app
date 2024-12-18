@@ -24,14 +24,14 @@
                 <div class="grid-item">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="home-logout-button">Logout</button>
+                        <button tabindex="1" type="submit" class="home-logout-button">Logout</button>
                     </form>
                 </div>
 
 
                 <div class="grid-item">
                     <form method="GET" action="{{ route('timeline') }}">
-                        <button type="submit" class="home-timeline-button">Timeline</button>
+                        <button tabindex="2" type="submit" class="home-account-button">Timeline</button>
                     </form>
                 </div>
             </div>
@@ -46,14 +46,14 @@
                 <div class="grid-item">
                     <form method="GET" action="{{ route('login') }}">
                         @csrf
-                        <button type="submit" class="home-account-button">Sign in</button>
+                        <button tabindex="1" type="submit" class="home-account-button">Sign in</button>
                     </form>
                 </div> 
 
                 <div class="grid-item">
                     <form method="GET" action="{{ route('register') }}">
                         @csrf
-                        <button type="submit" class="home-account-button">Register</button>
+                        <button tabindex="2" type="submit" class="home-account-button">Register</button>
                     </form>
                 </div> 
             </div>
