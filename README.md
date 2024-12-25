@@ -1,3 +1,50 @@
+
+# Coursework for CSC348: Web Application Development
+## Overview
+A web application created within the Laravel framework, in conjunction with PHP, MySQL, HTML, and CSS to create a social network, allowing users to post, comment, receive notifications, and view profiles containing all of a user's posts and comments.
+## Screenshots
+### Home Screen:
+
+<table>
+  <tr>
+      <td><img src="https://github.com/user-attachments/assets/dc05fc8a-a333-4367-9299-d11ede9c29e3"/>
+      <td><img src="https://github.com/user-attachments/assets/661deaf9-517b-4215-bc35-0dbe2a2c7919"/>
+      <td><img src="https://github.com/user-attachments/assets/742ce8c2-d0a2-463c-9fc8-d4a1dfcaee7d"/>
+  </tr>
+</table>
+
+### Timeline:
+
+![image](https://github.com/user-attachments/assets/3f4a2580-36ab-401c-a147-c86876c64d3f)
+
+### Post:
+
+![image](https://github.com/user-attachments/assets/a287249c-8117-486d-8813-ba34cf68fd35)
+
+### Profile:
+
+![image](https://github.com/user-attachments/assets/0ab3a251-c23f-452d-9cef-9d28899dfa9e)
+
+### Notifications:
+
+![image](https://github.com/user-attachments/assets/1262ef33-04ae-4608-b9e8-23ebde980989)
+
+### Admin Privileges:
+
+<table height="50%">
+    <tr>
+        <td><img src="https://github.com/user-attachments/assets/95fb8046-2170-487c-830d-87b9a58b5472"/></td>
+        <td><img src="https://github.com/user-attachments/assets/5fb99ec5-c76b-4553-b815-2304df49c86d"/></td>
+    </tr>
+</table>
+
+
+
+
+
+
+## About Laravel
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -7,7 +54,6 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
@@ -21,46 +67,6 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
+### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
